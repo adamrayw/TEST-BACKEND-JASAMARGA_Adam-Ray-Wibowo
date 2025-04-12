@@ -14,7 +14,9 @@ module.exports = {
         references: {
           model: 'employees',
           key: 'id'
-        }
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
       },
       place_of_birth: {
         type: Sequelize.STRING,

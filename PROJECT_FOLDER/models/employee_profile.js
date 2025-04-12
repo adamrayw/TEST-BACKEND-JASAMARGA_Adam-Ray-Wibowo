@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+const employee = require('./employee');
 module.exports = (sequelize, DataTypes) => {
   class employee_profile extends Model {
     /**
@@ -22,10 +23,6 @@ module.exports = (sequelize, DataTypes) => {
     employee_id: {
       type: Sequelize.INTEGER,
       allowNull: false,
-      references: {
-        model: 'employees',
-        key: 'id'
-      }
     },
     place_of_birth: {
       type: Sequelize.STRING,
@@ -68,6 +65,19 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'employee_profile',
+    tableName: 'employee_profiles',
+    timestamps: true,
+    createdAt: 'created_at',
+    updatedAt: 'updated_at',
   });
+
+  employee_profile.belongsTo(employee, {
+    foreignKey: 'employee_id',
+  })
+
+  employee.hasOne(employee_profile, {
+    foreignKey: 'employee_id',
+  })
+
   return employee_profile;
 };

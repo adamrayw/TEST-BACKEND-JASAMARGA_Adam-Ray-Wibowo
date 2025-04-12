@@ -2,22 +2,62 @@
 const {
   Model
 } = require('sequelize');
+const employee = require('./employee');
 module.exports = (sequelize, DataTypes) => {
-  class education extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
-    }
-  }
+  class education extends Model { }
+
   education.init({
-    name: DataTypes.STRING
+    id: {
+      type: DataTypes.INTEGER, 
+      primaryKey: true, 
+      autoIncrement: true
+    },
+    employee_id: {
+      type: DataTypes.INTEGER, 
+      allowNull: false
+    },
+    name: {
+      type: DataTypes.STRING
+    },
+    level: {
+      type: DataTypes.ENUM('Tk', 'Sd', 'Smp', 'Sma', 'Strata 1', 'Strata 2', 'Doktor', 'Profesor')
+    },
+    description: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    created_by: {
+      type: DataTypes.STRING, 
+      allowNull: false
+    },
+    updated_by: {
+      type: DataTypes.STRING, 
+      allowNull: false
+    },
+    created_at: {
+      type: DataTypes.DATE, 
+      allowNull: false
+    },
+    updated_at: {
+      type: DataTypes.DATE, 
+      allowNull: false
+    },
   }, {
     sequelize,
     modelName: 'education',
+    tableName: 'educations',
+    timestamps: true,
+    createdAt: 'created_at',
+    updatedAt: 'updated_at',
   });
+
+  education.belongsTo(employee, {
+    foreignKey: 'employee_id',
+  });
+  
+  employee.hasMany(education, {
+    foreignKey: 'employee_id',
+  });
+
   return education;
 };

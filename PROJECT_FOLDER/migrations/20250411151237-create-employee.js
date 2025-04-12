@@ -2,39 +2,39 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('educations', {
+    await queryInterface.createTable('employees', {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
-        autoIncrement: true
+        autoIncrement: true,
+        allowNull: false
       },
-      employee_id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-          model: 'employees',
-          key: 'id'
-        },
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE'
+      nik: {
+        type: Sequelize.STRING,
+        allowNull: true
       },
       name: {
-        type: Sequelize.STRING
-      },
-      level: {
-        type: Sequelize.ENUM('Tk', 'Sd', 'Smp', 'Sma', 'Strata 1', 'Strata 2', 'Doktor', 'Profesor')
-      },
-      description: {
         type: Sequelize.STRING,
+        allowNull: true
+      },
+      is_active: {
+        type: Sequelize.BOOLEAN
+      },
+      start_date: {
+        type: Sequelize.DATE,
+        allowNull: false
+      },
+      end_date: {
+        type: Sequelize.DATE,
         allowNull: false
       },
       created_by: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
       },
       updated_by: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
       },
       created_at: {
         type: Sequelize.DATE,
@@ -47,6 +47,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('educations');
+    await queryInterface.dropTable('employees');
   }
 };
