@@ -2,18 +2,25 @@
 const {
   Model
 } = require('sequelize');
-const employee = require('./employee');
 module.exports = (sequelize, DataTypes) => {
-  class education extends Model { }
+  class education extends Model {
+    static associate(models) {
+
+      education.belongsTo(models.employee, {
+        foreignKey: 'employee_id',
+      });
+
+    }
+  }
 
   education.init({
     id: {
-      type: DataTypes.INTEGER, 
-      primaryKey: true, 
+      type: DataTypes.INTEGER,
+      primaryKey: true,
       autoIncrement: true
     },
     employee_id: {
-      type: DataTypes.INTEGER, 
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     name: {
@@ -27,19 +34,19 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     created_by: {
-      type: DataTypes.STRING, 
+      type: DataTypes.STRING,
       allowNull: false
     },
     updated_by: {
-      type: DataTypes.STRING, 
+      type: DataTypes.STRING,
       allowNull: false
     },
     created_at: {
-      type: DataTypes.DATE, 
+      type: DataTypes.DATE,
       allowNull: false
     },
     updated_at: {
-      type: DataTypes.DATE, 
+      type: DataTypes.DATE,
       allowNull: false
     },
   }, {
@@ -51,13 +58,6 @@ module.exports = (sequelize, DataTypes) => {
     updatedAt: 'updated_at',
   });
 
-  education.belongsTo(employee, {
-    foreignKey: 'employee_id',
-  });
-  
-  employee.hasMany(education, {
-    foreignKey: 'employee_id',
-  });
 
   return education;
 };

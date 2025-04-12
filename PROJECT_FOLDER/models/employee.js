@@ -3,12 +3,26 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class employee extends Model { }
+  class employee extends Model {
+    static associate(models) {
+      employee.hasMany(models.education, {
+        foreignKey: 'employee_id',
+      });
+
+      employee.hasOne(models.employee_profile, {
+        foreignKey: 'employee_id',
+      })
+
+      employee.hasMany(models.employee_family, {
+        foreignKey: 'employee_id',
+      });
+    }
+  }
 
   employee.init({
     id: {
-      type: DataTypes.INTEGER, 
-      primaryKey: true, 
+      type: DataTypes.INTEGER,
+      primaryKey: true,
       autoIncrement: true,
       allowNull: false
     },
@@ -40,11 +54,11 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true
     },
     created_at: {
-      type: DataTypes.DATE, 
+      type: DataTypes.DATE,
       allowNull: false
     },
     updated_at: {
-      type: DataTypes.DATE, 
+      type: DataTypes.DATE,
       allowNull: false
     },
   }, {
@@ -54,7 +68,7 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: true,
     createdAt: 'created_at',
     updatedAt: 'updated_at',
-  }); 
-  
+  });
+
   return employee;
 };

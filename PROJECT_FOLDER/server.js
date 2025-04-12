@@ -3,6 +3,7 @@ const app = express();
 const db = require('./config/database.js');
 
 app.use(express.json());
+app.use('/employees', require('./routes/employeeRoutes'));
 
 db.authenticate()
     .then(() => console.log('Database connected...'))

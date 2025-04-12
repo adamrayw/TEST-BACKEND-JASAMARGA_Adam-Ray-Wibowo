@@ -2,9 +2,16 @@
 const {
   Model
 } = require('sequelize');
-const employee = require('./employee');
+
 module.exports = (sequelize, DataTypes) => {
-  class employee_family extends Model { }
+  class employee_family extends Model {
+    static associate(models) {
+      employee_family.belongsTo(models.employee, {
+        foreignKey: 'employee_id',
+      });
+    }
+  }
+  
   employee_family.init({
     id: {
       type: DataTypes.INTEGER,
@@ -70,14 +77,6 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: true,
     createdAt: 'created_at',
     updatedAt: 'updated_at',
-  });
-
-  employee_family.belongsTo(employee, {
-    foreignKey: 'employee_id',
-  });
-  
-  employee.hasMany(employee_family, {
-    foreignKey: 'employee_id',
   });
 
   return employee_family;
