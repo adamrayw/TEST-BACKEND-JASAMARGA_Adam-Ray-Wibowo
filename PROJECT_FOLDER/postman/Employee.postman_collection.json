@@ -1,0 +1,194 @@
+{
+	"info": {
+		"_postman_id": "24f0b742-1c42-462d-bdf4-9e6cbafdb91d",
+		"name": "Employee",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15223874",
+		"_collection_link": "https://www.postman.com/security-candidate-45681893/workspace/test-backend-jasamarga-adam-ray-wibowo/collection/15223874-24f0b742-1c42-462d-bdf4-9e6cbafdb91d?action=share&source=collection_link&creator=15223874"
+	},
+	"item": [
+		{
+			"name": "Create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nik\": \"EMP202501\",\r\n  \"name\": \"John Does\",\r\n  \"is_active\": true,\r\n  \"start_date\": \"2023-01-01\",\r\n  \"end_date\": \"2025-01-01\",\r\n\r\n  \"employee_profile\": {\r\n    \"place_of_birth\": \"Jakarta\",\r\n    \"date_of_birth\": \"1998-08-20\",\r\n    \"gender\": \"Laki-laki\",\r\n    \"is_married\": true,\r\n    \"prof_pict\": \"adam.jpg\"\r\n  },\r\n\r\n  \"employee_family\": [\r\n    {\r\n      \"name\": \"Sarah Wibowo\",\r\n      \"identifier\": \"3210019981234567\",\r\n      \"job\": \"Ibu Rumah Tangga\",\r\n      \"place_of_birth\": \"1970-04-12\",\r\n      \"date_of_birth\": \"1970-04-12\",\r\n      \"religion\": \"Islam\",\r\n      \"is_life\": true,\r\n      \"is_divorced\": false,\r\n      \"relation_status\": \"Istri\"\r\n    },\r\n    {\r\n      \"name\": \"Rizky Wibowo\",\r\n      \"job\": \"Pelajar\",\r\n      \"date_of_birth\": \"2012-03-11\",\r\n      \"religion\": \"Islam\",\r\n      \"is_life\": true,\r\n      \"relation_status\": \"Anak\"\r\n    }\r\n  ],\r\n\r\n  \"educations\": [\r\n    {\r\n      \"name\": \"Universitas Budi Luhur\",\r\n      \"level\": \"Strata 1\",\r\n      \"description\": \"Teknik Informatika\"\r\n    },\r\n    {\r\n      \"name\": \"SMA Negeri 1 Jakarta\",\r\n      \"level\": \"Sma\",\r\n      \"description\": \"DKV\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/employees/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"employees",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Employees",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nik\": \"EMP202501\",\r\n  \"name\": \"Adam Ray Wibowo\",\r\n  \"is_active\": true,\r\n  \"start_date\": \"2023-01-01\",\r\n  \"end_date\": \"2025-01-01\",\r\n\r\n  \"employee_profile\": {\r\n    \"place_of_birth\": \"Jakarta\",\r\n    \"date_of_birth\": \"1998-08-20\",\r\n    \"gender\": \"Laki-laki\",\r\n    \"is_married\": true,\r\n    \"prof_pict\": \"adam.jpg\"\r\n  },\r\n\r\n  \"employee_family\": [\r\n    {\r\n      \"name\": \"Sarah Wibowo\",\r\n      \"identifier\": \"3210019981234567\",\r\n      \"job\": \"Ibu Rumah Tangga\",\r\n      \"place_of_birth\": \"1970-04-12\",\r\n      \"date_of_birth\": \"1970-04-12\",\r\n      \"religion\": \"Islam\",\r\n      \"is_life\": true,\r\n      \"is_divorced\": false,\r\n      \"relation_status\": \"Anak\"\r\n    },\r\n    {\r\n      \"name\": \"Rizky Wibowo\",\r\n      \"job\": \"Pelajar\",\r\n      \"date_of_birth\": \"2012-03-11\",\r\n      \"religion\": \"Islam\",\r\n      \"is_life\": true,\r\n      \"relation_status\": \"Anak\"\r\n    }\r\n  ],\r\n\r\n  \"educations\": [\r\n    {\r\n      \"name\": \"Universitas Budi Luhur\",\r\n      \"level\": \"Strata 1\",\r\n      \"description\": \"Teknik Informatika\"\r\n    },\r\n    {\r\n      \"name\": \"SMA Negeri 1 Jakarta\",\r\n      \"level\": \"Sma\",\r\n      \"description\": \"DKV\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/employees/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"employees",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Employee Report",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nik\": \"EMP202501\",\r\n  \"name\": \"Adam Ray Wibowo\",\r\n  \"is_active\": true,\r\n  \"start_date\": \"2023-01-01\",\r\n  \"end_date\": \"2025-01-01\",\r\n\r\n  \"employee_profile\": {\r\n    \"place_of_birth\": \"Jakarta\",\r\n    \"date_of_birth\": \"1998-08-20\",\r\n    \"gender\": \"Laki-laki\",\r\n    \"is_married\": true,\r\n    \"prof_pict\": \"adam.jpg\"\r\n  },\r\n\r\n  \"employee_family\": [\r\n    {\r\n      \"name\": \"Sarah Wibowo\",\r\n      \"identifier\": \"3210019981234567\",\r\n      \"job\": \"Ibu Rumah Tangga\",\r\n      \"place_of_birth\": \"1970-04-12\",\r\n      \"date_of_birth\": \"1970-04-12\",\r\n      \"religion\": \"Islam\",\r\n      \"is_life\": true,\r\n      \"is_divorced\": false,\r\n      \"relation_status\": \"Anak\"\r\n    },\r\n    {\r\n      \"name\": \"Rizky Wibowo\",\r\n      \"job\": \"Pelajar\",\r\n      \"date_of_birth\": \"2012-03-11\",\r\n      \"religion\": \"Islam\",\r\n      \"is_life\": true,\r\n      \"relation_status\": \"Anak\"\r\n    }\r\n  ],\r\n\r\n  \"educations\": [\r\n    {\r\n      \"name\": \"Universitas Budi Luhur\",\r\n      \"level\": \"Strata 1\",\r\n      \"description\": \"Teknik Informatika\"\r\n    },\r\n    {\r\n      \"name\": \"SMA Negeri 1 Jakarta\",\r\n      \"level\": \"Sma\",\r\n      \"description\": \"DKV\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/employees/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"employees",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Employee by Id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nik\": \"EMP202501\",\r\n  \"name\": \"Adam Ray Wibowo\",\r\n  \"is_active\": true,\r\n  \"start_date\": \"2023-01-01\",\r\n  \"end_date\": \"2025-01-01\",\r\n\r\n  \"employee_profile\": {\r\n    \"place_of_birth\": \"Jakarta\",\r\n    \"date_of_birth\": \"1998-08-20\",\r\n    \"gender\": \"Laki-laki\",\r\n    \"is_married\": true,\r\n    \"prof_pict\": \"adam.jpg\"\r\n  },\r\n\r\n  \"employee_family\": [\r\n    {\r\n      \"name\": \"Sarah Wibowo\",\r\n      \"identifier\": \"3210019981234567\",\r\n      \"job\": \"Ibu Rumah Tangga\",\r\n      \"place_of_birth\": \"1970-04-12\",\r\n      \"date_of_birth\": \"1970-04-12\",\r\n      \"religion\": \"Islam\",\r\n      \"is_life\": true,\r\n      \"is_divorced\": false,\r\n      \"relation_status\": \"Anak\"\r\n    },\r\n    {\r\n      \"name\": \"Rizky Wibowo\",\r\n      \"job\": \"Pelajar\",\r\n      \"date_of_birth\": \"2012-03-11\",\r\n      \"religion\": \"Islam\",\r\n      \"is_life\": true,\r\n      \"relation_status\": \"Anak\"\r\n    }\r\n  ],\r\n\r\n  \"educations\": [\r\n    {\r\n      \"name\": \"Universitas Budi Luhur\",\r\n      \"level\": \"Strata 1\",\r\n      \"description\": \"Teknik Informatika\"\r\n    },\r\n    {\r\n      \"name\": \"SMA Negeri 1 Jakarta\",\r\n      \"level\": \"Sma\",\r\n      \"description\": \"DKV\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/employees/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"employees",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nik\": \"EMP202509\",\r\n  \"name\": \"Adam Ray Wibowos\",\r\n  \"is_active\": false,\r\n  \"start_date\": \"2023-01-01\",\r\n  \"end_date\": \"2025-01-01\",\r\n\r\n  \"employee_profile\": {\r\n    \"place_of_birth\": \"Bandung\",\r\n    \"date_of_birth\": \"1998-08-20\",\r\n    \"gender\": \"Laki-laki\",\r\n    \"is_married\": true,\r\n    \"prof_pict\": \"adam.jpg\"\r\n  },\r\n\r\n  \"employee_family\": [\r\n    {\r\n      \"name\": \"Sarah Wibowo\",\r\n      \"identifier\": \"3210019981234567\",\r\n      \"job\": \"Ibu Rumah Tangga\",\r\n      \"place_of_birth\": \"1970-04-12\",\r\n      \"date_of_birth\": \"1970-04-12\",\r\n      \"religion\": \"Islam\",\r\n      \"is_life\": true,\r\n      \"is_divorced\": false,\r\n      \"relation_status\": \"Anak\"\r\n    },\r\n    {\r\n      \"name\": \"Rizky Wibowo\",\r\n      \"job\": \"Pelajar\",\r\n      \"date_of_birth\": \"2012-03-11\",\r\n      \"religion\": \"Islam\",\r\n      \"is_life\": true,\r\n      \"relation_status\": \"Anak\"\r\n    }\r\n  ],\r\n\r\n  \"educations\": [\r\n    {\r\n      \"name\": \"Universitas Budi Luhur\",\r\n      \"level\": \"Strata 1\",\r\n      \"description\": \"Teknik Informatika\"\r\n    },\r\n    {\r\n      \"name\": \"SMA Negeri 1 Jakarta\",\r\n      \"level\": \"Sma\",\r\n      \"description\": \"DKV\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/employees/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"employees",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nik\": \"EMP202509\",\r\n  \"name\": \"Adam Ray Wibowos\",\r\n  \"is_active\": false,\r\n  \"start_date\": \"2023-01-01\",\r\n  \"end_date\": \"2025-01-01\",\r\n\r\n  \"employee_profile\": {\r\n    \"place_of_birth\": \"Bandung\",\r\n    \"date_of_birth\": \"1998-08-20\",\r\n    \"gender\": \"Laki-laki\",\r\n    \"is_married\": true,\r\n    \"prof_pict\": \"adam.jpg\"\r\n  },\r\n\r\n  \"employee_family\": [\r\n    {\r\n      \"name\": \"Sarah Wibowo\",\r\n      \"identifier\": \"3210019981234567\",\r\n      \"job\": \"Ibu Rumah Tangga\",\r\n      \"place_of_birth\": \"1970-04-12\",\r\n      \"date_of_birth\": \"1970-04-12\",\r\n      \"religion\": \"Islam\",\r\n      \"is_life\": true,\r\n      \"is_divorced\": false,\r\n      \"relation_status\": \"Anak\"\r\n    },\r\n    {\r\n      \"name\": \"Rizky Wibowo\",\r\n      \"job\": \"Pelajar\",\r\n      \"date_of_birth\": \"2012-03-11\",\r\n      \"religion\": \"Islam\",\r\n      \"is_life\": true,\r\n      \"relation_status\": \"Anak\"\r\n    }\r\n  ],\r\n\r\n  \"educations\": [\r\n    {\r\n      \"name\": \"Universitas Budi Luhur\",\r\n      \"level\": \"Strata 1\",\r\n      \"description\": \"Teknik Informatika\"\r\n    },\r\n    {\r\n      \"name\": \"SMA Negeri 1 Jakarta\",\r\n      \"level\": \"Sma\",\r\n      \"description\": \"DKV\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/employees/12",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"employees",
+						"12"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
