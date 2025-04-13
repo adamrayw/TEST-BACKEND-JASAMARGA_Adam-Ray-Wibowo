@@ -29,7 +29,7 @@ const employeeSchema = Joi.object({
             religion: Joi.string().valid("Islam", "Katolik", "Buda", "Protestan", "Konghucu").optional(),
             is_life: Joi.boolean().optional(),
             is_divorced: Joi.boolean().optional(),
-            relation_status: Joi.string().valid("Suami/Istri", "Anak", "Anak Sambung").required()
+            relation_status: Joi.string().valid("Suami", "Istri", "Anak", "Anak Sambung").required()
         })
     ),
 

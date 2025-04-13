@@ -1,5 +1,5 @@
 const { employeeSchema } = require("../middlewares/validationMiddleware");
-const { createEmployee, updateEmployee, deleteEmployee, getAllEmployees, getEmployeeById } = require("../services/employeeService");
+const { createEmployee, updateEmployee, deleteEmployee, getAllEmployees, getEmployeeById, employeeReport } = require("../services/employeeService");
 
 async function getAllEmployeesController(req, res) {
     try {
@@ -77,10 +77,26 @@ async function deleteEmployeeController(req, res) {
     }
 }
 
+async function employeeReportController(req, res) {
+    const id = req.params.id;
+
+    try {
+        const report = await employeeReport(id);
+        res.status(200).json(report);
+    } catch (err) {
+        console.error('Employee Report Error:', err);
+        res.status(500).json({
+            message: 'Failed to generate employee report',
+            error: err.message
+        });
+    }
+}
+
 module.exports = {
     createEmployeeController,
     updateEmployeeController,
     deleteEmployeeController,
     getAllEmployeesController,
-    getEmployeeByIdController
+    getEmployeeByIdController,
+    employeeReportController
 };

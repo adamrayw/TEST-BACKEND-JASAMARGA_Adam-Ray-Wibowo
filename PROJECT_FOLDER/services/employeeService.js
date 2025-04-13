@@ -11,20 +11,20 @@ async function getAllEmployees() {
 
 async function getEmployeeById(id) {
     return await employee.findOne({
-      where: { id },
-      include: [
-        {
-          model: employee_profile,
-        },
-        {
-          model: employee_family,
-        },
-        {
-          model: education,
-        }
-      ]
+        where: { id },
+        include: [
+            {
+                model: employee_profile,
+            },
+            {
+                model: employee_family,
+            },
+            {
+                model: education,
+            }
+        ]
     });
-  }
+}
 
 async function createEmployee(data) {
     return await sequelize.transaction(async (t) => {
@@ -73,7 +73,6 @@ async function createEmployee(data) {
 
 async function updateEmployee(id, data) {
     return await sequelize.transaction(async (t) => {
-        // Update main employee
         await employee.update({
             nik: data.nik,
             name: data.name,
@@ -138,7 +137,7 @@ async function updateEmployee(id, data) {
 
 async function deleteEmployee(id) {
     return await sequelize.transaction(async (t) => {
-       
+
         // delete related data first
         await employee_profile.destroy({ where: { employee_id: id }, transaction: t });
         await employee_family.destroy({ where: { employee_id: id }, transaction: t });
@@ -155,10 +154,70 @@ async function deleteEmployee(id) {
     });
 }
 
+async function employeeReport(id) {
+    return await sequelize.transaction(async (t) => {
+        const employees = await employee.findAll({
+            // where: { id },
+            include: [
+                {
+                    model: employee_profile,
+                },
+                {
+                    model: employee_family,
+                },
+                {
+                    model: education,
+                }
+            ]
+        });
+
+        if (!employees) {
+            throw new Error('Employee not found');
+        }
+
+        const result = employees.map(emp => {
+            const profile = emp.employee_profile;
+            const education = emp.education[0]; 
+            const families = emp.employee_families;
+
+            // Hitung umur
+            const birthDate = new Date(profile?.date_of_birth);
+            const today = new Date();
+            const age = today.getFullYear() - birthDate.getFullYear();
+            const gender = profile?.gender || '-';
+
+            // Hitung jumlah istri & anak
+            const wifeCount = families?.filter(fam => fam.relation_status === 'Istri').length || 0;
+            const childCount = families?.filter(fam => fam.relation_status === 'Anak').length || 0;
+
+            const family_data = (wifeCount > 0 || childCount > 0)
+                ? `${wifeCount} Istri & ${childCount} Anak`
+                : '-';
+
+            return {
+                employee_id: emp.id,
+                nik: emp.nik,
+                name: emp.name,
+                is_active: emp.is_active,
+                gender,
+                age: `${age} Years Old`,
+                school_name: education?.name || '-',
+                level: education?.level || '-',
+                family_data,
+            };
+        });
+
+
+        return result;
+
+    })
+}
+
 module.exports = {
     createEmployee,
     updateEmployee,
     deleteEmployee,
     getAllEmployees,
-    getEmployeeById
+    getEmployeeById,
+    employeeReport
 };

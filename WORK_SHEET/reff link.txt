@@ -1,0 +1,4 @@
+https://sadique.io/blog/2019/05/09/looking-up-enum-types-and-values-in-postgres/
+https://sequelize.org/docs/v6/
+https://stackoverflow.com/questions/56794598/how-to-set-default-boolean-value-in-sequelize
+https://sadique.io/blog/2019/05/09/looking-up-enum-types-and-values-in-postgres/

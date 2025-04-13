@@ -35,7 +35,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true
     },
     place_of_birth: {
-      type: DataTypes.DATE,
+      type: DataTypes.STRING,
       allowNull: true
     },
     date_of_birth: {
@@ -52,7 +52,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.BOOLEAN
     },
     relation_status: {
-      type: DataTypes.ENUM('Suami/Istri', 'Anak', 'Anak Sambung')
+      type: DataTypes.ENUM('Suami', 'Istri', 'Anak', 'Anak Sambung')
     },
     created_by: {
       type: DataTypes.STRING,

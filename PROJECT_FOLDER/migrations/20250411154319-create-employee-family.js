@@ -2,6 +2,11 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
+
+    await queryInterface.sequelize.query(`
+      CREATE TYPE "enum_employee_families_relation_status" AS ENUM ('Suami', 'Istri', 'Anak', 'Anak Sambung');
+    `);
+
     await queryInterface.createTable('employee_families', {
       id: {
         type: Sequelize.INTEGER,
@@ -31,7 +36,7 @@ module.exports = {
         allowNull: true
       },
       place_of_birth: {
-        type: Sequelize.DATE,
+        type: Sequelize.STRING,
         allowNull: true
       },
       date_of_birth: {
@@ -48,7 +53,7 @@ module.exports = {
         type: Sequelize.BOOLEAN
       },
       relation_status: {
-        type: Sequelize.ENUM('Suami/Istri', 'Anak', 'Anak Sambung')
+        type: Sequelize.ENUM('Suami', 'Istri', 'Anak', 'Anak Sambung')
       },
       created_by: {
         type: Sequelize.STRING,
